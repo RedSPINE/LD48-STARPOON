@@ -58,9 +58,8 @@ public class PlayerLogic : MonoBehaviour
 
     public void SnapToAnchor(Transform anchor)
     {
-        if (currentAnchor != null) currentAnchor.hasPlayer = false;
+        if (currentAnchor != null) currentAnchor.HasPlayer = false;
         currentAnchor = anchor.GetComponent<Anchor>();
-        currentAnchor.hasPlayer = true;
         transform.DOMove(anchor.position, 1/harpoon.GetComponent<Harpoon>().speed);
     }
 }

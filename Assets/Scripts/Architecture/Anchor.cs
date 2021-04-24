@@ -10,19 +10,23 @@ public class Anchor : MonoBehaviour
     public bool HasPlayer
     {
         get => hasPlayer;
-        set {
+        set
+        {
             hasPlayer = value;
             EvaluateParticle();
         }
     }
     public GameObject GripSFXPrefab;
 
-    private void Awake() {
+    private void Awake()
+    {
+        particles = GetComponent<ParticleSystem>();
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (HasPlayer) return;
-        if(other.CompareTag("Harpoon"))
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (hasPlayer) return;
+        if (other.CompareTag("Harpoon"))
         {
             Instantiate(GripSFXPrefab, transform.position, Quaternion.identity);
             gripEvent.Play(GetComponent<AudioSource>());
@@ -32,10 +36,12 @@ public class Anchor : MonoBehaviour
 
     private void EvaluateParticle()
     {
-        if (!hasPlayer)
-            particles.Play();
-        else
+
+        Debug.Log("Changing HasValue to " + hasPlayer);
+        if (hasPlayer)
             particles.Stop();
+        else
+            particles.Play();
     }
 
 }

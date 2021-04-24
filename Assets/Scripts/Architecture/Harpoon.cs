@@ -46,7 +46,7 @@ public class Harpoon : MonoBehaviour
             transform.position = other.transform.position;
             target = Vector2.zero;
         }
-        if(other.transform.CompareTag("Anchor"))
+        if(other.transform.CompareTag("Anchor") && ( player.currentAnchor == null || other.gameObject != player.currentAnchor.gameObject))
         {
             player.SnapToAnchor(other.transform);
             transform.DOKill();

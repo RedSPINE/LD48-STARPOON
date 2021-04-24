@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb1546e3ec9ba5a41b832cab2f6b7e5e, type: 3}
+  m_Name: EnnemyKillEvent
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: da528e3c76e41b1408619508623dc6b7, type: 3}
+  minVolume: 0.582
+  maxVolume: 0.82
+  minPitch: 0.665
+  maxPitch: 1.384

@@ -10,12 +10,13 @@ public class PlayerLogic : MonoBehaviour
     private Vector2 targetWorldPos;
     private Harpoon harpoon;
     public bool hasHarpoon;
-    public float range;
+    public float Range;
     public AudioEvent HarpoonFireSFX;
     public AudioEvent LoseSFX;
     public Anchor currentAnchor;
     public float speedModifier = 1;
     public float maxRange = 4.5f;
+    [SerializeField] private Animator starAnimator;
 
     private void Awake() {
         Cursor.visible = false; 
@@ -23,6 +24,7 @@ public class PlayerLogic : MonoBehaviour
         harpoon = FindObjectOfType<Harpoon>();
         hasHarpoon = true;
         speedModifier = 1;
+        UpdateAnimatorSpeed();
     }
 
     public void OnAim(InputValue value)
@@ -51,11 +53,16 @@ public class PlayerLogic : MonoBehaviour
         FireHarpoon();
     }
 
+    public void UpdateAnimatorSpeed()
+    {
+        starAnimator.speed = Mathf.Pow(Range/maxRange, 1.5f);
+    }
+
     private void FireHarpoon()
     {
         HarpoonFireSFX.Play(GetComponent<AudioSource>());
         var direction = (targetWorldPos - new Vector2(transform.position.x, transform.position.y)).normalized;
-        var targetPos = direction * range + new Vector2(transform.position.x, transform.position.y);
+        var targetPos = direction * Range + new Vector2(transform.position.x, transform.position.y);
         harpoon.SetTarget(targetPos);
         hasHarpoon = false;
     }

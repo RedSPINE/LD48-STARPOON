@@ -50,10 +50,11 @@ public class PowerUp : MonoBehaviour, IColorHandler
         if (other.CompareTag("Player") || other.CompareTag("Harpoon"))
         {
             var player = FindObjectOfType<PlayerLogic>();
-            player.range += lengthBonus;
+            player.Range += lengthBonus;
             FindObjectOfType<HeartCollectionUI>().AddHeart();
-            if (player.range > player.maxRange)
-                player.range = player.maxRange;
+            if (player.Range > player.maxRange)
+                player.Range = player.maxRange;
+            player.UpdateAnimatorSpeed();
             Die();
         }
     }

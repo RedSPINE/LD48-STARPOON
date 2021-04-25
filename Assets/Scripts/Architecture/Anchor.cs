@@ -6,6 +6,7 @@ public class Anchor : MonoBehaviour
 {
     public AudioEvent gripEvent;
     private ParticleSystem particles;
+    [SerializeField]
     private bool hasPlayer = false;
     public bool HasPlayer
     {

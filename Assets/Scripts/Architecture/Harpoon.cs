@@ -10,6 +10,7 @@ public class Harpoon : MonoBehaviour
     private Transform playerT;
     private Vector2 target;
     public float speed = 1;
+    [SerializeField]
     private bool stuck;
 
     private void Awake() {
@@ -23,7 +24,8 @@ public class Harpoon : MonoBehaviour
         // Good rotation
         transform.right = playerT.position - transform.position;
         // Come back to player if too far
-        if ((Vector2.Distance(playerT.position, transform.position) >= player.range
+        Debug.Log("Distance to player : " + Vector2.Distance(playerT.position, transform.position));
+        if ((Vector2.Distance(playerT.position, transform.position) >= player.Range
         || Vector2.Distance(new Vector2(target.x, target.y), transform.position)< 0.1f) && !stuck)
         {
             SetTarget(playerT.position);

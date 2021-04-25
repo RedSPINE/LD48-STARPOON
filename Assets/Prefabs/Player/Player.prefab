@@ -255,11 +255,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasHarpoon: 1
-  range: 2
+  Range: 0
   HarpoonFireSFX: {fileID: 11400000, guid: b85a86fbc62aeaa42a00bdf295777a9b, type: 2}
   LoseSFX: {fileID: 11400000, guid: 0aaea432ce1d00d45b9e787ffe948f7b, type: 2}
   currentAnchor: {fileID: 0}
   speedModifier: 1
+  maxRange: 4.5
+  starAnimator: {fileID: 3497167445740802297}
 --- !u!50 &7132707699533243334
 Rigidbody2D:
   serializedVersion: 4

@@ -7,12 +7,19 @@ using DG.Tweening;
 public class StarUI : MonoBehaviour
 {
     public bool filled = false;
+    public float filledScale = 1.2f;
+    public Transform ball;
+
+    private void Start() {
+        ball.GetComponent<Image>().enabled = false;
+    }
 
     public void Fill()
     {
         filled = true;
-        GetComponent<Image>().sprite = UISettings.Instance.fullStar;
-        transform.DOShakeScale(0.1f);
-        transform.DOShakeRotation(0.5f, 90, 10, 0);
+        transform.DOScale(Vector3.one * filledScale, 1);
+        transform.DORotate(new Vector3(0, 0, 360), 1, RotateMode.FastBeyond360);
+        ball.GetComponent<Image>().enabled = true;
+        ball.DOScale(Vector3.one * 0.1f, 1f);
     }
 }

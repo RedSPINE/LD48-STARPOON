@@ -50,6 +50,7 @@ public class Ennemy : MonoBehaviour
         Debug.Log("Head touched by trigger " + other.tag);
         if (other.CompareTag("Player"))
         {
+            Die();
             other.GetComponent<PlayerLogic>().Die();
         }
         else if (other.CompareTag("Harpoon"))
@@ -65,6 +66,11 @@ public class Ennemy : MonoBehaviour
     private void Die()
     {
         transform.DOKill();
+        if (data.bombPrefab != null)
+        {
+            GameObject bombGO = Instantiate(data.bombPrefab, transform.position, Quaternion.identity);
+            bombGO.transform.localScale = data.bombPrefab.transform.localScale;    
+        }
         GameObject deathSFX = Instantiate(DeathSFXPrefab, transform.position, Quaternion.identity);
         deathSFX.transform.localScale = DeathSFXPrefab.transform.localScale;
         Destroy(this.gameObject);

@@ -39,14 +39,18 @@ public class Harpoon : MonoBehaviour
 
     // Collision trigger detection
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.transform.CompareTag("Player"))
+        if (other.CompareTag("Ennemy"))
+        {
+            SetTarget(playerT.position);
+        }
+        else if(other.CompareTag("Player"))
         {
             player.hasHarpoon = true;
             transform.DOKill();
             transform.position = other.transform.position;
             target = Vector2.zero;
         }
-        if(other.transform.CompareTag("Anchor") && ( player.currentAnchor == null || other.gameObject != player.currentAnchor.gameObject))
+        else if(other.CompareTag("Anchor") && ( player.currentAnchor == null || other.gameObject != player.currentAnchor.gameObject))
         {
             player.SnapToAnchor(other.transform);
             transform.DOKill();

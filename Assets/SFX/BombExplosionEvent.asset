@@ -9,7 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3373726078ce4c7489be376eaa0e94b1, type: 3}
-  m_Name: EnemyType1
+  m_Script: {fileID: 11500000, guid: fb1546e3ec9ba5a41b832cab2f6b7e5e, type: 3}
+  m_Name: BombExplosionEvent
   m_EditorClassIdentifier: 
-  speed: 1
+  interval: 0
+  count: 0
+  clips:
+  - {fileID: 8300000, guid: 4dbf51f7cdb0686449a6b385c6afeda5, type: 3}
+  minVolume: 1.114
+  maxVolume: 1.459
+  minPitch: 0.722
+  maxPitch: 1.145

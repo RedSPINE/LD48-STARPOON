@@ -66,7 +66,9 @@ public class PlayerLogic : MonoBehaviour
 
     public void Die()
     {
+        transform.DOKill();
         LoseSFX.Play(GetComponent<AudioSource>());
-        FindObjectOfType<SceneChanger>().ResetScene(0.5f);
+        StartCoroutine(FindObjectOfType<CameraShake>()._ProcessShake());
+        FindObjectOfType<SceneChanger>().ResetScene(1f);
     }
 }

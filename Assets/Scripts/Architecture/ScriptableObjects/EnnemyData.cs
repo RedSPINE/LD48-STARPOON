@@ -5,4 +5,5 @@ public class EnnemyData : ScriptableObject
 {
     public float speed;
     public float detectionRange = 5;
+    public GameObject bombPrefab;
 }

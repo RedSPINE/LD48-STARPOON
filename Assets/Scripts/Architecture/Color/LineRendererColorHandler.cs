@@ -6,19 +6,11 @@ public class LineRendererColorHandler : MonoBehaviour, IColorHandler
 {
     public LineRenderer lineRenderer;
     public int colorTag;
-
-    private void OnDestroy() {
-        FindObjectOfType<ColorManager>().Unsubscribe(this);
-    }
-
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
     }
 
-    private void Start() {
-        FindObjectOfType<ColorManager>().Subscribe(this);
-    }
 
     public void LoadPalette()
     {

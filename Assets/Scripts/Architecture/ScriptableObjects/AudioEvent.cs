@@ -6,8 +6,8 @@ public class AudioEvent : ScriptableObject
 {
     [Min(0.1f)]
     public float interval;
-    [Range(1, 10)]
-    public int count;
+    [Range(-1, 10)]
+    public int count; // -1 for no stopping
 
     public AudioClip[] clips;
     [Range(0, 2)]

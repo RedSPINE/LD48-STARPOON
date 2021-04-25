@@ -47,11 +47,19 @@ public class Ennemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Head touched by " + other.tag);
-        if (other.CompareTag("Harpoon"))
+        Debug.Log("Head touched by trigger " + other.tag);
+        if (other.CompareTag("Player"))
+        {
+            other.GetComponent<PlayerLogic>().Die();
+        }
+        else if (other.CompareTag("Harpoon"))
         {
             Die();
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        Debug.Log("Head touched by collider " + other.gameObject.name);
     }
 
     private void Die()

@@ -11,7 +11,8 @@ public class PlayerLogic : MonoBehaviour
     private Harpoon harpoon;
     public bool hasHarpoon;
     public float range;
-    public AudioEvent HarpoonFire;
+    public AudioEvent HarpoonFireSFX;
+    public AudioEvent LoseSFX;
     public Anchor currentAnchor;
 
     private void Awake() {
@@ -49,7 +50,7 @@ public class PlayerLogic : MonoBehaviour
 
     private void FireHarpoon()
     {
-        HarpoonFire.Play(GetComponent<AudioSource>());
+        HarpoonFireSFX.Play(GetComponent<AudioSource>());
         var direction = (targetWorldPos - new Vector2(transform.position.x, transform.position.y)).normalized;
         var targetPos = direction * range + new Vector2(transform.position.x, transform.position.y);
         harpoon.SetTarget(targetPos);
@@ -61,5 +62,11 @@ public class PlayerLogic : MonoBehaviour
         if (currentAnchor != null) currentAnchor.HasPlayer = false;
         currentAnchor = anchor.GetComponent<Anchor>();
         transform.DOMove(anchor.position, 1/harpoon.GetComponent<Harpoon>().speed);
+    }
+
+    public void Die()
+    {
+        LoseSFX.Play(GetComponent<AudioSource>());
+        FindObjectOfType<SceneChanger>().ResetScene(0.5f);
     }
 }

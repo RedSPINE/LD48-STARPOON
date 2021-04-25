@@ -33,14 +33,6 @@ public class ColorHandler : MonoBehaviour, IColorHandler
 
     public List<RawImageGroup> RawImageGroups;
 
-    private void OnDestroy() {
-        FindObjectOfType<ColorManager>().Unsubscribe(this);
-    }
-
-    private void Start() {
-        FindObjectOfType<ColorManager>().Subscribe(this);
-    }
-
     public void LoadPalette()
     {
         ColorManager manager = FindObjectOfType<ColorManager>();

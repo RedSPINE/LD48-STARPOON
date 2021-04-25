@@ -10,10 +10,12 @@ public class Harpoon : MonoBehaviour
     private Transform playerT;
     private Vector2 target;
     public float speed = 1;
+    private bool stuck;
 
     private void Awake() {
         player = FindObjectOfType<PlayerLogic>();
         playerT = player.transform;
+        stuck = false;
     }
 
     private void Update() {
@@ -21,7 +23,8 @@ public class Harpoon : MonoBehaviour
         // Good rotation
         transform.right = playerT.position - transform.position;
         // Come back to player if too far
-        if (Vector2.Distance(playerT.position, transform.position) >= player.range || Vector2.Distance(new Vector2(target.x, target.y), transform.position)< 0.1f)
+        if ((Vector2.Distance(playerT.position, transform.position) >= player.range
+        || Vector2.Distance(new Vector2(target.x, target.y), transform.position)< 0.1f) && !stuck)
         {
             SetTarget(playerT.position);
         }
@@ -46,6 +49,7 @@ public class Harpoon : MonoBehaviour
         else if(other.CompareTag("Player"))
         {
             player.hasHarpoon = true;
+            stuck = false;
             transform.DOKill();
             transform.position = other.transform.position;
             target = Vector2.zero;
@@ -55,6 +59,7 @@ public class Harpoon : MonoBehaviour
             player.SnapToAnchor(other.transform);
             transform.DOKill();
             transform.position = other.transform.position;
+            stuck = true;
         }
     }
 

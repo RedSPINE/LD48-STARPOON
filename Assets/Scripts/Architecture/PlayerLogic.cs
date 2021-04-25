@@ -14,12 +14,15 @@ public class PlayerLogic : MonoBehaviour
     public AudioEvent HarpoonFireSFX;
     public AudioEvent LoseSFX;
     public Anchor currentAnchor;
+    public float speedModifier = 1;
+    public float maxRange = 4.5f;
 
     private void Awake() {
         Cursor.visible = false; 
         target = FindObjectOfType<Target>();
         harpoon = FindObjectOfType<Harpoon>();
         hasHarpoon = true;
+        speedModifier = 1;
     }
 
     public void OnAim(InputValue value)
@@ -61,14 +64,24 @@ public class PlayerLogic : MonoBehaviour
     {
         if (currentAnchor != null) currentAnchor.HasPlayer = false;
         currentAnchor = anchor.GetComponent<Anchor>();
-        transform.DOMove(anchor.position, 1/harpoon.GetComponent<Harpoon>().speed);
+        transform.DOMove(anchor.position, 1/harpoon.GetComponent<Harpoon>().speed * speedModifier);
     }
 
-    public void Die()
+    public void Damage()
     {
+        HeartCollectionUI heartsC = FindObjectOfType<HeartCollectionUI>();
+        int leftHeartsCount = heartsC.PopHeart();        
+        StartCoroutine(FindObjectOfType<CameraShake>()._ProcessShake());
+        if (leftHeartsCount <= 0)
+            Die();
+    }
+
+    private void Die() {
+        Debug.Log("STOP PLAYER");
+        speedModifier = 10000;
+        hasHarpoon = false;
         transform.DOKill();
         LoseSFX.Play(GetComponent<AudioSource>());
-        StartCoroutine(FindObjectOfType<CameraShake>()._ProcessShake());
         FindObjectOfType<SceneChanger>().ResetScene(1f);
     }
 }

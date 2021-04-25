@@ -30,13 +30,53 @@ public class Bomb : MonoBehaviour
         
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerLogic>().Die();
+            other.GetComponent<PlayerLogic>().Damage();
             Die();
         }
         else if (other.CompareTag("Harpoon"))
         {
             gluedTransform = other.transform;
         }
+        else if (other.CompareTag("Ennemy") || other.CompareTag("Bomb"))
+        {
+            Detonate();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        
+        if (other.collider.CompareTag("Ennemy"))
+        {
+            Detonate();
+        }
+    }
+
+    private float detonateRadius = 0.75f;
+    public bool isDetonating = false;
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detonateRadius);
+    }
+    
+    public void Detonate()
+    {
+        if (isDetonating) return;
+        isDetonating = true;
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, detonateRadius, Vector2.up);
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit.collider == null) continue;
+            if (hit.collider.CompareTag("Bomb"))
+            {
+                hit.collider.GetComponent<Bomb>().Detonate();
+            }
+            else if (hit.collider.CompareTag("Ennemy"))
+            {
+                hit.collider.GetComponentInParent<Ennemy>().Die();
+            }
+        }
+        Die();
     }
 
     private void Die()

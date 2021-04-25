@@ -36,8 +36,6 @@ public class Anchor : MonoBehaviour
 
     private void EvaluateParticle()
     {
-
-        Debug.Log("Changing HasValue to " + hasPlayer);
         if (hasPlayer)
             particles.Stop();
         else

@@ -51,7 +51,7 @@ public class Ennemy : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Die();
-            other.GetComponent<PlayerLogic>().Die();
+            other.GetComponent<PlayerLogic>().Damage();
         }
         else if (other.CompareTag("Harpoon"))
         {
@@ -63,13 +63,14 @@ public class Ennemy : MonoBehaviour
         Debug.Log("Head touched by collider " + other.gameObject.name);
     }
 
-    private void Die()
+    public void Die()
     {
         transform.DOKill();
         if (data.bombPrefab != null)
         {
             GameObject bombGO = Instantiate(data.bombPrefab, transform.position, Quaternion.identity);
-            bombGO.transform.localScale = data.bombPrefab.transform.localScale;    
+            bombGO.transform.localScale = data.bombPrefab.transform.localScale;
+            bombGO.GetComponent<Bomb>().direction = direction;
         }
         GameObject deathSFX = Instantiate(DeathSFXPrefab, transform.position, Quaternion.identity);
         deathSFX.transform.localScale = DeathSFXPrefab.transform.localScale;

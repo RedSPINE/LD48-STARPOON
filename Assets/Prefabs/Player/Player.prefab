@@ -259,6 +259,7 @@ MonoBehaviour:
   HarpoonFireSFX: {fileID: 11400000, guid: b85a86fbc62aeaa42a00bdf295777a9b, type: 2}
   LoseSFX: {fileID: 11400000, guid: 0aaea432ce1d00d45b9e787ffe948f7b, type: 2}
   currentAnchor: {fileID: 0}
+  speedModifier: 1
 --- !u!50 &7132707699533243334
 Rigidbody2D:
   serializedVersion: 4
@@ -425,6 +426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5643631109357885916}
   - component: {fileID: 8858899643083593340}
+  - component: {fileID: 3497167445740802297}
   m_Layer: 3
   m_Name: BodyTop
   m_TagString: Untagged
@@ -441,7 +443,7 @@ Transform:
   m_GameObject: {fileID: 8399500951410909241}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.054845937, y: 0.054845937, z: 0.054845937}
+  m_LocalScale: {x: 0.15864736, y: 0.15864736, z: 0.15864736}
   m_Children: []
   m_Father: {fileID: 7132707699533243332}
   m_RootOrder: 1
@@ -486,7 +488,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: a5b76aa6fe297874780d6fb51612b023, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 08ee742df0cf2074b8604028793907d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -497,6 +499,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3497167445740802297
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8399500951410909241}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3cda02e8326c5654ba64b8b8588afbce, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &9184199173828699363
 GameObject:
   m_ObjectHideFlags: 0

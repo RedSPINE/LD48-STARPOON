@@ -276,6 +276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pent1: {fileID: 4275364980904484562}
   pent2: {fileID: 4275364979522176797}
+  core: {fileID: 6999151938425247731}
   CollectVFXPrefab: {fileID: 6720442026801163271, guid: a4d1f12ef5a1097499b0988e904c17cb, type: 3}
   lengthBonus: 0.5
 --- !u!58 &4275364981354496175
@@ -338,7 +339,7 @@ Transform:
   m_GameObject: {fileID: 6999151938425247731}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.058776, y: 0.058776, z: 0.058776}
+  m_LocalScale: {x: 0.07983544, y: 0.07983544, z: 0.07983544}
   m_Children: []
   m_Father: {fileID: 4275364981354496169}
   m_RootOrder: 2

@@ -31,12 +31,12 @@ public class AudioEvent : ScriptableObject
 
     IEnumerator FireClips(AudioSource source)
     {
-        float time = 0;
+        float time = interval;
         int counter = 0;
         while (counter != count)
         {
             time += Time.deltaTime;
-            if (time > interval)
+            if (time >= interval)
             {
                 PlayClip(source);
                 counter++;

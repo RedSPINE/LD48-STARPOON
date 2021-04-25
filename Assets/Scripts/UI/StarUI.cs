@@ -20,6 +20,6 @@ public class StarUI : MonoBehaviour
         transform.DOScale(Vector3.one * filledScale, 1);
         transform.DORotate(new Vector3(0, 0, 360), 1, RotateMode.FastBeyond360);
         ball.GetComponent<Image>().enabled = true;
-        ball.DOScale(Vector3.one * 0.1f, 1f);
+        ball.DOPunchScale(Vector3.one * 0.15f, 1, 10, 1).SetLoops(-1);
     }
 }

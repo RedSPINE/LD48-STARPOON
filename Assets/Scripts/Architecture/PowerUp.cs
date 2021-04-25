@@ -6,7 +6,8 @@ public class PowerUp : MonoBehaviour, IColorHandler
 {
     [SerializeField] private GameObject pent1;
     [SerializeField] private GameObject pent2;
-    public GameObject CollectVFXPrefab; 
+    [SerializeField] private GameObject core;
+    public GameObject CollectVFXPrefab;
 
     private void Start()
     {
@@ -14,6 +15,7 @@ public class PowerUp : MonoBehaviour, IColorHandler
         Vector3 rot2 = new Vector3(0, 0, -360);
         pent1.transform.DORotate(rot1, 2, RotateMode.FastBeyond360).SetLoops(-1);
         pent2.transform.DORotate(rot2, 2, RotateMode.FastBeyond360).SetLoops(-1);
+        core.transform.DOPunchScale(Vector3.one * 0.1f, 1, 10, 1).SetLoops(-1);
     }
 
     public void LoadPalette()
@@ -47,7 +49,11 @@ public class PowerUp : MonoBehaviour, IColorHandler
     {
         if (other.CompareTag("Player") || other.CompareTag("Harpoon"))
         {
-            FindObjectOfType<PlayerLogic>().range += lengthBonus;
+            var player = FindObjectOfType<PlayerLogic>();
+            player.range += lengthBonus;
+            FindObjectOfType<HeartCollectionUI>().AddHeart();
+            if (player.range > player.maxRange)
+                player.range = player.maxRange;
             Die();
         }
     }
@@ -56,6 +62,7 @@ public class PowerUp : MonoBehaviour, IColorHandler
     {
         pent1.transform.DOKill();
         pent2.transform.DOKill();
+        core.transform.DOKill();
         GameObject vfxGO = Instantiate(CollectVFXPrefab, transform.position, Quaternion.identity);
         vfxGO.transform.localScale = CollectVFXPrefab.transform.localScale;
         FindObjectOfType<ColorManager>().NexPalette();

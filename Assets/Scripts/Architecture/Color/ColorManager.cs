@@ -43,8 +43,8 @@ public class ColorManager : MonoBehaviour
 
     public void NexPalette()
     {
-        if (oldPalette != palette) oldPalette ++;
-        palette++;
+        if (oldPalette != palette) oldPalette = (oldPalette + 1) % palettes.Count;
+        palette = (palette + 1) % palettes.Count;
         FindObjectOfType<StarCollectionUI>().FillNextStar();
         LoadPalette();
     }

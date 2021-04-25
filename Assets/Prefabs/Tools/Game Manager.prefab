@@ -50,6 +50,7 @@ MonoBehaviour:
   TimeToTransition: 1
   animator: {fileID: 0}
   StartGameSFX: {fileID: 11400000, guid: d9f1ca39b8eedcc479612029056fca7a, type: 2}
+  EndGameSFX: {fileID: 11400000, guid: f0ca1b7f00ff3094c85dcfa4848f9a2e, type: 2}
 --- !u!114 &1040064844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,8 +80,11 @@ MonoBehaviour:
   timeToTransition: 1
   palettes:
   - {fileID: 11400000, guid: 80fd22aec018a924ebca379e9e55f15d, type: 2}
-  - {fileID: 11400000, guid: fd5648ffc461eaa46aeaaa063bf49063, type: 2}
+  - {fileID: 11400000, guid: 1180da3bd48c11a44b45fed296f3eb48, type: 2}
   - {fileID: 11400000, guid: d6f2df38532e3f249a8b102673c396c9, type: 2}
+  - {fileID: 11400000, guid: f422680ad786053419b2630671c9dd76, type: 2}
+  - {fileID: 11400000, guid: b9a21d518f7cc5f438acac923e88fe0f, type: 2}
+  - {fileID: 11400000, guid: acbfb02e083383d4d871d6aa618eb98d, type: 2}
 --- !u!114 &1040064845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,7 +101,8 @@ MonoBehaviour:
   - tag: 0
     materials: []
   - tag: 1
-    materials: []
+    materials:
+    - {fileID: 2100000, guid: 6768eaf7cca4f8e44a529f33b0a4e38d, type: 2}
   - tag: 2
     materials: []
   - tag: 3

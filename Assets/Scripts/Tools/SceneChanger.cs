@@ -8,6 +8,7 @@ public class SceneChanger : MonoBehaviour
 	public float TimeToTransition;
 	public Animator animator;
     public AudioEvent StartGameSFX;
+    public AudioEvent EndGameSFX;
 
     public void ChangeScene(string sceneName)
     {
@@ -34,5 +35,11 @@ public class SceneChanger : MonoBehaviour
 
     private void Start() {
         StartGameSFX.Play(GetComponent<AudioSource>());
+    }
+
+    public void EndGame()
+    {
+        animator.SetTrigger("End");
+        EndGameSFX.Play(GetComponent<AudioSource>());
     }
 }
